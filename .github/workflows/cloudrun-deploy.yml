@@ -1,0 +1,31 @@
+# 선택사항: GitHub Actions로 Cloud Run 자동 배포를 직접 구성하고 싶을 때 쓰는 예시입니다.
+# 처음에는 Google Cloud Console의 "Continuously deploy from a repository" 기능을 쓰는 것이 더 쉽습니다.
+# 이 파일을 실제 workflow로 쓰려면 파일명을 cloudrun-deploy.yml로 바꾸고,
+# GitHub Secrets에 GCP_PROJECT_ID, GCP_REGION, GCP_SERVICE, GCP_WORKLOAD_IDENTITY_PROVIDER, GCP_SERVICE_ACCOUNT를 설정하세요.
+
+name: Deploy to Cloud Run
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+      - uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: ${{ secrets.GCP_SERVICE }}
+          region: ${{ secrets.GCP_REGION }}
+          source: .
