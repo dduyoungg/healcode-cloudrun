@@ -10,7 +10,7 @@ export default function Footer() {
             <span>HealCode</span>
           </div>
           <p className="footer-slogan">We heal patients, with code and love</p>
-          <p className="footer-mail">katiepops@pusan.ac.kr</p>
+          <p className="footer-mail">healcode@example.com</p>
         </div>
         <div className="footer-links">
           <Link to="/projects">Projects</Link>
