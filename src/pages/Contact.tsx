@@ -10,9 +10,9 @@ export default function Contact() {
       <section className="section contact-section">
         <div className="container contact-card">
           <img src="/healcode-icon.webp" alt="HealCode logo" />
-          <h2>katiepops@pusan.ac.kr</h2>
+          <h2>healcode@example.com</h2>
           <p>프로젝트 협업, 가입 문의, 외부 발표 제안은 위 이메일로 연락해주세요.</p>
-          <a className="button primary" href="mailto:katiepops@pusan.ac.kr">Send email</a>
+          <a className="button primary" href="mailto:healcode@example.com">Send email</a>
         </div>
       </section>
     </>
