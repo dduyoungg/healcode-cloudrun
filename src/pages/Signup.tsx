@@ -32,6 +32,7 @@ export default function Signup() {
       email,
       password,
       options: {
+        emailRedirectTo: `${window.location.origin}/login?verified=true`,
         data: {
           full_name: name
         }
@@ -45,7 +46,7 @@ export default function Signup() {
       return;
     }
 
-    setMessage("회원가입이 완료되었습니다. 관리자 승인 후 이용할 수 있습니다.");
+    setMessage("인증 메일을 보냈습니다. 이메일 인증 후 로그인해주세요.");
 
     setTimeout(() => {
       navigate("/login");
